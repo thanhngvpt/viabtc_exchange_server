@@ -37,15 +37,19 @@
     },
     "assets": [
         {
-            "name": "USD",
-            "prec_save": 16,
-            "prec_show": 4
+            "name": "ETH",
+            "prec_save": 8,
+            "prec_show": 8
+        }, {
+            "name": "ETC",
+            "prec_save": 8,
+            "prec_show": 8
         }, {
             "name": "BTC",
             "prec_save": 16,
             "prec_show": 8
         }, {
-            "name": "BCC",
+            "name": "BCH",
             "prec_save": 16,
             "prec_show": 8
         }, {
@@ -53,81 +57,130 @@
             "prec_save": 8,
             "prec_show": 8
         }, {
-            "name": "ETH",
-            "prec_save": 8,
-            "prec_show": 8
-        }, {
-            "name": "ZEC",
+            "name": "XRP",
             "prec_save": 8,
             "prec_show": 8
         }, {
             "name": "DASH",
             "prec_save": 8,
             "prec_show": 8
+        }, {
+            "name": "ZEC",
+            "prec_save": 8,
+            "prec_show": 8
         }
     ],
+
     "markets": [
         {
-            "name": "BTCUSD",
+            "name": "BTCETH",
             "stock": {
                 "name": "BTC",
                 "prec": 4
             },
             "money": {
-                "name": "USD",
-                "prec": 2
-            },
-            "min_amount": "0.001"
+                "name": "ETH",
+                "prec": 4
+            }
         }, {
-            "name": "BCCUSD",
+            "name": "BTCETC",
             "stock": {
-                "name": "BCC",
+                "name": "BTC",
                 "prec": 4
             },
             "money": {
-                "name": "USD",
-                "prec": 2
-            },
-            "min_amount": "0.001"
+                "name": "ETC",
+                "prec": 4
+            }
         }, {
-            "name": "ETHUSD",
+            "name": "BTCBCH",
+            "stock": {
+                "name": "BTC",
+                "prec": 4
+            },
+            "money": {
+                "name": "BCH",
+                "prec": 4
+            }
+        }, {
+            "name": "BTCLTC",
+            "stock": {
+                "name": "BTC",
+                "prec": 4
+            },
+            "money": {
+                "name": "LTC",
+                "prec": 4
+            }
+        }, {
+            "name": "BTCXRP",
+            "stock": {
+                "name": "BTC",
+                "prec": 4
+            },
+            "money": {
+                "name": "XRP",
+                "prec": 4
+            }
+        }, {
+            "name": "BTCDASH",
+            "stock": {
+                "name": "BTC",
+                "prec": 4
+            },
+            "money": {
+                "name": "DASH",
+                "prec": 4
+            }
+        }, {
+            "name": "BTCZEC",
+            "stock": {
+                "name": "BTC",
+                "prec": 4
+            },
+            "money": {
+                "name": "ZEC",
+                "prec": 4
+            }
+        }, {
+            "name": "ETHETC",
             "stock": {
                 "name": "ETH",
                 "prec": 4
             },
             "money": {
-                "name": "USD",
-                "prec": 2
+                "name": "ETC",
+                "prec": 4
             }
         }, {
-            "name": "ZECUSD",
+            "name": "ETHLTC",
             "stock": {
-                "name": "ZEC",
+                "name": "ETH",
                 "prec": 4
             },
             "money": {
-                "name": "USD",
-                "prec": 2
-            }
-        }, {
-            "name": "LTCUSD",
-            "stock": {
                 "name": "LTC",
                 "prec": 4
-            },
-            "money": {
-                "name": "USD",
-                "prec": 2
             }
         }, {
-            "name": "DASHUSD",
+            "name": "ETHXRP",
             "stock": {
-                "name": "DASH",
+                "name": "ETH",
                 "prec": 4
             },
             "money": {
-                "name": "USD",
-                "prec": 2
+                "name": "XRP",
+                "prec": 4
+            }
+        }, {
+            "name": "ETHZEC",
+            "stock": {
+                "name": "ETH",
+                "prec": 4
+            },
+            "money": {
+                "name": "ZEC",
+                "prec": 4
             }
         }
     ],
