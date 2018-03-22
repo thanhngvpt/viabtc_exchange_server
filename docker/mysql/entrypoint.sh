@@ -76,7 +76,7 @@ if [ "$1" = 'mysqld' -a "`id -u`" = '0' ]; then
 			FLUSH PRIVILEGES ;
 		EOSQL
 
-        # Initialise database which wil
+
 		mysql="mysql --protocol=socket -u${MYSQL_USER} -p${MYSQL_PASSWORD} -hlocalhost --socket=${SOCKET} $MYSQL_DATABASE_HISTORY"
 		echo "${mysql} < /docker-entrypoint-initdb.d/create_trade_history.sql";
 		/bin/sh -c "${mysql}" < "/docker-entrypoint-initdb.d/create_trade_history.sql";
