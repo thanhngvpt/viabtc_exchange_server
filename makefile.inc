@@ -3,7 +3,8 @@ OBJS    := $(patsubst %.c, %.o, $(SOURCE))
 CC      := gcc
 LD      := g++ #we will need to link c++ mysql client library
 CFLAGS  := -Wall -Wno-strict-aliasing -Wno-uninitialized -g -rdynamic -std=gnu99
-LFLAGS  := -g -rdynamic
+#LFLAGS  := -g -rdynamic -
+LFLAGS  := -g -static -static-libgcc -static-libstdc++
 
 .PHONY : all clean install
 
