@@ -57,7 +57,7 @@ COPY readhistory    viabtc_exchange_server/readhistory
 COPY accesshttp     viabtc_exchange_server/accesshttp
 COPY accessws       viabtc_exchange_server/accessws
 
-COPY makefile.inc                                   viabtc_exchange_server/makefile.inc
+COPY makefile.inc  viabtc_exchange_server/makefile.inc
 
 # Do the actial build of the microservices.
 RUN cd viabtc_exchange_server/depends/hiredis \
@@ -95,18 +95,8 @@ RUN cd viabtc_exchange_server/accessws \
 # to optimize Dockerfiles while keeping them easy to read and maintain.
 # With this we ensure that previous build layers are not stored and we grab
 # only what we need.
-FROM ubuntu:16.04
-
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y \
-			libldap-2.4 \
-			libgss3 \
-			librtmp1 \
-			libmysqlclient20 \
-			jq \
-			netcat
-RUN rm -rf /var/lib/apt/lists/*
+FROM alpine:3.7
+RUN apk --no-cache add bash
 
 RUN mkdir /viabtc_exchange_server
 # keep .exe for better grep of ps output
