@@ -76,22 +76,19 @@ if [ "$1" = 'mysqld' -a "`id -u`" = '0' ]; then
 			FLUSH PRIVILEGES ;
 		EOSQL
 
+        # Initialise database which wil
 		mysql="mysql --protocol=socket -u${MYSQL_USER} -p${MYSQL_PASSWORD} -hlocalhost --socket=${SOCKET} $MYSQL_DATABASE_HISTORY"
 		echo "${mysql} < /docker-entrypoint-initdb.d/create_trade_history.sql";
 		/bin/sh -c "${mysql}" < "/docker-entrypoint-initdb.d/create_trade_history.sql";
+
+		mysql="mysql --protocol=socket -u${MYSQL_USER} -p${MYSQL_PASSWORD} -hlocalhost --socket=${SOCKET} $MYSQL_DATABASE_LOG"
+		echo "${mysql} < /docker-entrypoint-initdb.d/create_trade_log.sql";
+		/bin/sh -c "${mysql}" < "/docker-entrypoint-initdb.d/create_trade_log.sql";
 
 		sed -i.bak "s/MYSQL_USER=.*$/MYSQL_USER=\"${MYSQL_USER}\"/" /docker-entrypoint-initdb.d/init_trade_history.sh
 		sed -i.bak "s/MYSQL_PASS=.*$/MYSQL_PASS=\"${MYSQL_PASSWORD}\"/" /docker-entrypoint-initdb.d/init_trade_history.sh
 		sed -i.bak "s/MYSQL_DB=.*$/MYSQL_DB=\"${MYSQL_DATABASE_HISTORY}\"/" /docker-entrypoint-initdb.d/init_trade_history.sh
 		/docker-entrypoint-initdb.d/init_trade_history.sh
-
-		mysql="mysql --protocol=socket -u${MYSQL_USER} -p${MYSQL_PASSWORD} -hlocalhost --socket=${SOCKET} $MYSQL_DATABASE_LOG"
-		echo "${mysql} < /docker-entrypoint-initdb.d/create_trade_log.sql";
-		/bin/sh -c "${mysql}" < "/docker-entrypoint-initdb.d/create_trade_log.sql";
-		sed -i.bak "s/MYSQL_USER=.*$/MYSQL_USER=\"${MYSQL_USER}\"/" /docker-entrypoint-initdb.d/init_trade_log.sh
-		sed -i.bak "s/MYSQL_PASS=.*$/MYSQL_PASS=\"${MYSQL_PASSWORD}\"/" /docker-entrypoint-initdb.d/init_trade_log.sh
-		sed -i.bak "s/MYSQL_DB=.*$/MYSQL_DB=\"${MYSQL_DATABASE_LOG}\"/" /docker-entrypoint-initdb.d/init_trade_log.sh
-		/docker-entrypoint-initdb.d/init_trade_log.sh
 
 	  PIDFILE="`_get_config 'pid-file' "$@"`"
 		pid=`cat $PIDFILE`
