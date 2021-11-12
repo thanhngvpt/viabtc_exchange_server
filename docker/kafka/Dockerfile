@@ -7,10 +7,10 @@ ENV LANG C.UTF-8
 # add a simple script that can auto-detect the appropriate JAVA_HOME value
 # based on whether the JDK or only the JRE is installed
 RUN { \
-		echo '#!/bin/sh'; \
-		echo 'set -e'; \
-		echo; \
-		echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
+	echo '#!/bin/sh'; \
+	echo 'set -e'; \
+	echo; \
+	echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
 	} > /usr/local/bin/docker-java-home \
 	&& chmod +x /usr/local/bin/docker-java-home
 
@@ -22,7 +22,7 @@ ENV JAVA_ALPINE_VERSION 8.275.01-r0
 
 RUN set -x \
 	&& apk add --no-cache \
-		openjdk8-jre="$JAVA_ALPINE_VERSION" \
+	openjdk8-jre="$JAVA_ALPINE_VERSION" \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
 RUN apk --no-cache add wget
@@ -32,7 +32,8 @@ RUN mkdir -p /etc/kafka
 RUN mkdir -p /var/log/kafka
 RUN mkdir -p /var/lib/kafka
 
-RUN wget http://mirror.linux-ia64.org/apache/kafka/2.6.2/kafka_2.12-2.6.2.tgz && \
+# RUN wget http://mirror.linux-ia64.org/apache/kafka/2.6.2/kafka_2.12-2.6.2.tgz && \
+RUN wget https://dlcdn.apache.org/kafka/2.6.2/kafka_2.12-2.6.2.tgz && \
 	tar -xvf kafka_2.12-2.6.2.tgz -C /opt/kafka/ && \
 	rm kafka_2.12-2.6.2.tgz
 

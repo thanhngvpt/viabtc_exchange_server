@@ -34,7 +34,8 @@ if [ "$1" = 'mysqld' -a "`id -u`" = '0' ]; then
 
 	if [ ! -d "$DATADIR/mysql" ]; then
 		echo "Initializing database in $DATADIR/mysql"
-		mysql_install_db --verbose --user=mysql
+		# https://github.com/yobasystems/alpine-mariadb/pull/28/files
+		mysql_install_db --verbose --user=mysql --ldata=/var/lib/mysql
 		echo 'Database initialized'
 
 		echo 'Start mysql to change root password'
